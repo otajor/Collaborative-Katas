@@ -1,5 +1,4 @@
 function doneOrNot (board) {
-  //debugger;
   var originalBoard = board.map(function (element) { return element.slice(); }); // makes a clone of orginal board so that it is not modified by our functions
   
   // checks whether an array contains each of the values 1-9 once
@@ -19,16 +18,6 @@ function doneOrNot (board) {
             rotatedBoard[i].push(board[j][i]);
         }
     }
-
-   var longArray = board.reduce(function(a, b) { return a.concat(b); });
-   var board3 = [[],[],[],[],[],[],[],[],[]];
-
-   for(var k = 0; k < 27; k += 9) {
-     board3[0].push(longArray[k], longArray[k + 1], longArray[k + 2])
-   }
-   for(var k = 3; k < 30; k += 9) {
-     board3[1].push(longArray[k], longArray[k + 1], longArray[k + 2])
-   }
    
    function boardMaker (board) {
      var emptyBoard = [[],[],[],[],[],[],[],[],[]];
