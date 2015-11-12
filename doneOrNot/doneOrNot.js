@@ -29,6 +29,29 @@ function doneOrNot (board) {
    for(var k = 3; k < 30; k += 9) {
      board3[1].push(longArray[k], longArray[k + 1], longArray[k + 2])
    }
+   
+   function boardMaker (board) {
+     var emptyBoard = [[],[],[],[],[],[],[],[],[]];
+     var longArray = board.reduce(function(a, b) { return a.concat(b); });  //concatenates board arrays into a single long array
+     for (var i = 0; i < 3; i++) {
+       for(var j = (i * 3); j < (i * 3) + 27; j += 9) {
+         emptyBoard[i].push(longArray[j], longArray[j + 1], longArray[j + 2]);
+       }
+       for(var k = (i * 3) + 27; k < (i * 3) + 54; k += 9) {
+         emptyBoard[i + 3].push(longArray[k], longArray[k + 1], longArray[k + 2]);
+       }
+       for(var l = (i * 3) + 54; l < (i * 3) + 81; l += 9) {
+         emptyBoard[i + 6].push(longArray[l], longArray[l + 1], longArray[l + 2]);
+       }
+     }
+     return emptyBoard;
+   }
+   
+   var boardOfSquares = boardMaker(board);
+  
+   originalBoard.forEach(arrayChecker);
+   rotatedBoard.forEach(arrayChecker);
+   boardOfSquares.forEach(arrayChecker);
   
    if (!validArray)
      return 'Try again!';
